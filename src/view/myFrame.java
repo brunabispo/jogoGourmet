@@ -95,10 +95,10 @@ public class myFrame extends javax.swing.JFrame {
         // System.out.println(comida.getComidas().size() -1);
         
         for(count = listSize; count > 0; count--) {
-            resposta = qualComida(comida, count);
+            resposta = qualComida(comida, count, true);
             
             if(resposta == JOptionPane.YES_OPTION) {
-                resposta = qualComida(comida, count);
+                resposta = qualComida(comida, count, false);
                 
                 if(resposta == JOptionPane.YES_OPTION) {
                     correto();
@@ -112,7 +112,7 @@ public class myFrame extends javax.swing.JFrame {
         }
         
         if(count == 0) {
-            resposta = qualComida(comida, count);
+            resposta = qualComida(comida, count, false);
             
             if(resposta == JOptionPane.YES_OPTION) {
                 correto();
@@ -122,7 +122,12 @@ public class myFrame extends javax.swing.JFrame {
         }
     }
     
-    private int qualComida(ListaComidas comida, int count) {
+    private int qualComida(ListaComidas comida, int count, boolean atributo) {
+        if(atributo) {
+            return JOptionPane.showConfirmDialog(this, 
+                    "O prato que pensou é ".concat(comida.getComidas().get(count).getAtributos()).concat("?"),
+                    "Confirma", JOptionPane.YES_NO_OPTION);
+        }
         return JOptionPane.showConfirmDialog(this, 
                     "O prato que pensou é ".concat(comida.getComidas().get(count).getComida()).concat("?"),
                     "Confirma", JOptionPane.YES_NO_OPTION);

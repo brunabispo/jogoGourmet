@@ -26,8 +26,4 @@ public class ListaComidas {
     public void setComidas(List<Comida> comidas) {
         this.comidas = comidas;
     }
-    
-    public String getComidasStr() {
-        return comidas.toString();
-    }
 }
